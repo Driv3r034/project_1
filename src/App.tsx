@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { PageWrapper } from './styles/content-container'
 import './App.css'
 
 export const App = () => {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <PageWrapper>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -28,6 +29,6 @@ export const App = () => {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </PageWrapper>
   )
 }

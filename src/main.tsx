@@ -2,16 +2,24 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import { App } from './App.tsx'
 import { Header } from './components/sections/header/header.tsx'
+import { Footer } from './components/sections/footer/footer.tsx'
 import { FirstPage } from './pages/first-page/first-page.tsx'
+import { GlobalStyle } from '../public/styled-global.ts';
+import * as Styled from './App.styles';
 import './index.css'
 
-
 createRoot(document.getElementById('root')!).render(
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/first" element={<FirstPage />} />
-      </Routes>
-    </Router>
+  <>
+    <GlobalStyle />
+    <Styled.WrapperApp>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/first" element={<FirstPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </Styled.WrapperApp>
+  </>
 )
