@@ -15,6 +15,11 @@ export const Header = () => {
                             <Styled.NavItemWrap>
                                 <Styled.NavItem to={'/first'}>
                                     First
+                                </Styled.NavItem>    
+                            </Styled.NavItemWrap>
+                            <Styled.NavItemWrap>
+                                <Styled.NavItem to={'/contacts'}>
+                                     Contacts
                                 </Styled.NavItem>
                             </Styled.NavItemWrap>
                     </Styled.NavItemsContainer>
