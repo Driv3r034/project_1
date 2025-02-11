@@ -1,7 +1,10 @@
-import { rem } from './../src/helpers/rem-converter';
 import { createGlobalStyle } from 'styled-components';
+import { rem } from './../src/helpers/rem-converter';
+import { styledScrollbar } from '../src/styles/styled-scroll';
 
 export const GlobalStyle = createGlobalStyle`
+    ${styledScrollbar};
+
     button {
         padding: 0;
     }
