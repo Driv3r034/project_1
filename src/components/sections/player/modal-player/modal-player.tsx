@@ -1,11 +1,13 @@
 import { FC, useState } from "react";
-import { Button, Modal } from "antd";
+import { Button, Modal, Slider } from "antd";
 import { VideoPlayer } from "../video-player";
 import {
     PauseCircleTwoTone,
     ArrowsAltOutlined,
     PlayCircleTwoTone,
     ShrinkOutlined,
+    MutedOutlined,
+    SoundOutlined,
 } from "@ant-design/icons";
 import * as Styled from './modal-player.styles';
 
@@ -20,12 +22,24 @@ interface ModalPlayerProps {
 export const ModalPlayer: FC<ModalPlayerProps> = ({ visible, onPlay, onPause, onClose }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
+    const [volume, setVolume] = useState(7);
+    const styled = { fontSize: '24px', color: '#08c' };
 
     const togglePlay = () => {
         setIsPlaying(prev => !prev);
     };
+
     const toggleExpand = () => {
         setIsExpanded(prev => !prev);
+    };
+
+    const toggleMute = () => {
+        setIsMuted(prev => !prev);
+    };
+
+    const handleVolumeChange = (value: number) => {
+        setVolume(value);
     };
 
     return (
@@ -34,19 +48,40 @@ export const ModalPlayer: FC<ModalPlayerProps> = ({ visible, onPlay, onPause, on
             open={visible}
             onCancel={onClose}
             footer={[
-                <Styled.WrapperBtn>
-                    <Button key="play">
-                        {isExpanded
-                            ? <ShrinkOutlined onClick={toggleExpand} style={{ fontSize: '24px', color: '#08c' }} />
-                            : <ArrowsAltOutlined onClick={toggleExpand} style={{ fontSize: '24px', color: '#08c' }} />
-                        }
-                    </Button>
-                    <Button key="expand">
-                        {isPlaying
-                            ? <PauseCircleTwoTone onClick={togglePlay} style={{ fontSize: '24px', color: '#08c' }} />
-                            : <PlayCircleTwoTone onClick={togglePlay} style={{ fontSize: '24px', color: '#08c' }} />
-                        }
-                    </Button>
+                <Styled.WrapperBtn key='controls'>
+                    <div>
+                        
+                        <Slider
+                            min={0}
+                            max={10}
+                            step={1}
+                            value={volume}
+                            onChange={handleVolumeChange}
+                            style={{ width: 100 }}
+                        />
+                        <Button key="mute" onClick={toggleMute}>
+                            {isMuted
+                                ? <MutedOutlined style={styled} />
+                                : <SoundOutlined style={styled} />
+                            }
+                        </Button>
+                    </div>
+                    <div>
+                        <Button key="expand">
+                            {isPlaying
+                                ? <PauseCircleTwoTone onClick={togglePlay} style={styled} />
+                                : <PlayCircleTwoTone onClick={togglePlay} style={styled} />
+                            }
+                        </Button>
+                    </div>
+                    <div>
+                        <Button key="play">
+                            {isExpanded
+                                ? <ShrinkOutlined onClick={toggleExpand} style={styled} />
+                                : <ArrowsAltOutlined onClick={toggleExpand} style={styled} />
+                            }
+                        </Button>
+                    </div>
                 </Styled.WrapperBtn>
             ]}
             width={isExpanded ? 950 : 450}

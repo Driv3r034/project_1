@@ -3,7 +3,8 @@ import { useMachine } from "@xstate/react";
 import { PageWrapper } from "../../styles/content-container";
 import { ModalPlayer } from "../../components/sections/player/modal-player/modal-player";
 import { playerMachine } from "../../components/sections/player/state/player-machine";
-import { Button } from "antd";
+import { PlayCircleTwoTone } from "@ant-design/icons";
+import * as Styled from './player.styles';
 
 export const Player = () => {
     const [state, send] = useMachine(playerMachine);
@@ -14,9 +15,12 @@ export const Player = () => {
     
     return (
         <PageWrapper>
-            <Button type="primary" onClick={() => setModalVisible(true)}>
-                Video Player
-            </Button>
+            <Styled.ClosedModal>
+                <PlayCircleTwoTone
+                    style={{ fontSize: '50px' }}
+                    onClick={() => setModalVisible(true)}
+                />
+            </Styled.ClosedModal>
             <ModalPlayer
                 visible={modalVisible}
                 play={state.matches('playing')}
