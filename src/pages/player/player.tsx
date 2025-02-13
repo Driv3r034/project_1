@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMachine } from "@xstate/react";
 import { PageWrapper } from "../../styles/content-container";
-import { ModalPlayer } from "../../components/sections/player/modal-player";
+import { ModalPlayer } from "../../components/sections/player/modal-player/modal-player";
 import { playerMachine } from "../../components/sections/player/state/player-machine";
 import { Button } from "antd";
 
@@ -11,7 +11,6 @@ export const Player = () => {
 
     const playVideo = () => send({ type: 'PLAY' });
     const pauseVideo = () => send({ type: 'PAUSE' });
-    const maximizeVideo = () => send({ type: 'MAXIMIZE' });
     
     return (
         <PageWrapper>

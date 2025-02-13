@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ReactPlayer from "react-player"
+import ReactPlayer from "react-player";
 
 interface VideoPlayerProps {
     url: string;
@@ -16,7 +16,8 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, play, onPlay, onPause }
                 playing={play}
                 onPlay={onPlay}
                 onPause={onPause}
-                controls
+                width={"100%"}
+                height={"100%"}
             />
         </>
     );
