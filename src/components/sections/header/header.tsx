@@ -18,6 +18,11 @@ export const Header = () => {
                                 </Styled.NavItem>    
                             </Styled.NavItemWrap>
                             <Styled.NavItemWrap>
+                                <Styled.NavItem to={'/player'}>
+                                     Player
+                                </Styled.NavItem>
+                            </Styled.NavItemWrap>
+                            <Styled.NavItemWrap>
                                 <Styled.NavItem to={'/contacts'}>
                                      Contacts
                                 </Styled.NavItem>

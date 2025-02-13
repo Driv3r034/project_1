@@ -4,6 +4,7 @@ import { App } from './App.tsx'
 import { Header } from './components/sections/header/header.tsx'
 import { Footer } from './components/sections/footer/footer.tsx'
 import { FirstPage } from './pages/first-page/first-page.tsx'
+import { Player } from './pages/player/player.tsx'
 import { ContactsPage } from './pages/contacts/contacts.tsx'
 import { GlobalStyle } from '../public/styled-global.ts';
 import * as Styled from './App.styles';
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/first" element={<FirstPage />} />
+          <Route path="/player" element={<Player />} />
           <Route path="/contacts" element={<ContactsPage />} />
         </Routes>
         <Footer />
