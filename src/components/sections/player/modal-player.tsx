@@ -13,7 +13,7 @@ interface ModalPlayerProps {
 export const ModalPlayer: FC<ModalPlayerProps> = ({ visible, onPlay, onPause, onClose, play }) => (
     <Modal
         title="New Video Player"
-        visible={visible}
+        open={visible}
         onCancel={onClose}
         footer={[
             <Button key="play" onClick={onPlay}>Play ▷</Button>,

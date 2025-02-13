@@ -25,15 +25,6 @@ export const Player = () => {
                 onPause={pauseVideo}
                 onClose={() => setModalVisible(false)}                
             />
-            {state.matches('minimized') && (
-                <Button onClick={maximizeVideo}>Maximize Player</Button>
-            )}
-            {state.matches('paused') && (
-                <Button onClick={playVideo}>Play</Button>
-            )}
-            {state.matches('playing') && (
-                <Button onClick={pauseVideo}>Pause</Button>
-            )}
         </PageWrapper>
     );
 };
