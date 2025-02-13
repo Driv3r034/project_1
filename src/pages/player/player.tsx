@@ -1,10 +1,39 @@
+import { useState } from "react";
+import { useMachine } from "@xstate/react";
 import { PageWrapper } from "../../styles/content-container";
+import { ModalPlayer } from "../../components/sections/player/modal-player";
+import { playerMachine } from "../../components/sections/player/state/player-machine";
+import { Button } from "antd";
 
 export const Player = () => {
+    const [state, send] = useMachine(playerMachine);
+    const [modalVisible, setModalVisible] = useState(false);
 
+    const playVideo = () => send({ type: 'PLAY' });
+    const pauseVideo = () => send({ type: 'PAUSE' });
+    const maximizeVideo = () => send({ type: 'MAXIMIZE' });
+    
     return (
         <PageWrapper>
-            <h1>Player</h1>
+            <Button type="primary" onClick={() => setModalVisible(true)}>
+                Video Player
+            </Button>
+            <ModalPlayer
+                visible={modalVisible}
+                play={state.matches('playing')}
+                onPlay={playVideo}
+                onPause={pauseVideo}
+                onClose={() => setModalVisible(false)}                
+            />
+            {state.matches('minimized') && (
+                <Button onClick={maximizeVideo}>Maximize Player</Button>
+            )}
+            {state.matches('paused') && (
+                <Button onClick={playVideo}>Play</Button>
+            )}
+            {state.matches('playing') && (
+                <Button onClick={pauseVideo}>Pause</Button>
+            )}
         </PageWrapper>
     );
 };
