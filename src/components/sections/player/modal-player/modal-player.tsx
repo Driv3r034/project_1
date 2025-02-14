@@ -72,7 +72,7 @@ export const ModalPlayer: FC<ModalPlayerProps> = ({
                         </Button>
                     </div>
                     <div>
-                        <Button key="expand">
+                        <Button key="play">
                             {isPlaying
                                 ? <PauseCircleTwoTone onClick={togglePlay} style={styled} />
                                 : <PlayCircleTwoTone onClick={togglePlay} style={styled} />
@@ -80,7 +80,7 @@ export const ModalPlayer: FC<ModalPlayerProps> = ({
                         </Button>
                     </div>
                     <div>
-                        <Button key="play">
+                        <Button key="expand">
                             {isExpanded
                                 ? <ShrinkOutlined onClick={toggleExpand} style={styled} />
                                 : <ArrowsAltOutlined onClick={toggleExpand} style={styled} />
