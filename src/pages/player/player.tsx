@@ -9,9 +9,21 @@ import * as Styled from './player.styles';
 export const Player = () => {
     const [state, send] = useMachine(playerMachine);
     const [modalVisible, setModalVisible] = useState(false);
+    const [volume, setVolume] = useState(7);
 
     const playVideo = () => send({ type: 'PLAY' });
     const pauseVideo = () => send({ type: 'PAUSE' });
+
+    const handleVolumeChange = (value: number) => {
+        const newVolume = Math.max(0, Math.min(value, 10));
+        setVolume(newVolume);
+
+        if (newVolume === 0) {
+            send({ type: 'MUTE' });
+        } else {
+            send({ type: 'UNMUTE' });
+        }
+    };
     
     return (
         <PageWrapper>
@@ -26,7 +38,12 @@ export const Player = () => {
                 play={state.matches('playing')}
                 onPlay={playVideo}
                 onPause={pauseVideo}
-                onClose={() => setModalVisible(false)}                
+                onClose={() => setModalVisible(false)}
+                volume={volume}
+                onVolumeChange={handleVolumeChange}
+                isMuted={state.matches('muted')}
+                onMute={() => send({ type: 'MUTE' })}
+                onUnmute={() => send({ type: 'UNMUTE' })}
             />
         </PageWrapper>
     );

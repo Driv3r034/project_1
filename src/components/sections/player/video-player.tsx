@@ -6,9 +6,11 @@ interface VideoPlayerProps {
     play: boolean;
     onPlay: () => void;
     onPause: () => void;
+    volume: number;
+    muted: boolean;
 }
 
-export const VideoPlayer: FC<VideoPlayerProps> = ({ url, play, onPlay, onPause }) => {
+export const VideoPlayer: FC<VideoPlayerProps> = ({ url, play, onPlay, onPause, volume, muted }) => {
     return (
         <>
             <ReactPlayer
@@ -16,6 +18,8 @@ export const VideoPlayer: FC<VideoPlayerProps> = ({ url, play, onPlay, onPause }
                 playing={play}
                 onPlay={onPlay}
                 onPause={onPause}
+                volume={volume}
+                muted={muted}
                 width={"100%"}
                 height={"100%"}
             />
