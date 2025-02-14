@@ -54,7 +54,7 @@ export const ModalPlayer: FC<ModalPlayerProps> = ({
             onCancel={onClose}
             footer={[
                 <Styled.WrapperBtn key='controls'>
-                    <div> 
+                    <div style={{ gap: '7px' }}> 
                         <Slider
                             key="volume"
                             min={0}
@@ -93,12 +93,11 @@ export const ModalPlayer: FC<ModalPlayerProps> = ({
             height={isExpanded ? 530 : 250 }
         >
             <VideoPlayer
-                // url="https://cdn.flowplayer.com/d9cd469f-14fc-4b7b-a7f6-ccbfa755dcb8/hls/383f752a-cbd1-4691-a73f-a4e583391b3d/playlist.m3u8"
-                url="https://www.youtube.com/watch?v=L1aU6SQxGuA"
+                url="https://cdn.flowplayer.com/d9cd469f-14fc-4b7b-a7f6-ccbfa755dcb8/hls/383f752a-cbd1-4691-a73f-a4e583391b3d/playlist.m3u8"
                 play={isPlaying}
                 onPlay={onPlay}
                 onPause={onPause}
-                volume={volume} 
+                volume={volume / 10} 
                 muted={isMuted} 
             />
         </Modal>
