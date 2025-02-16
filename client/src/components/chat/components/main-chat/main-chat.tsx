@@ -28,7 +28,7 @@ export const MainChat = () => {
     return (
         <Styled.Wrapper>
             <Styled.Container>
-                <h1>Login Chat</h1>
+                <h1>Join</h1>
 
                 <Styled.Form>
                     <div>
@@ -61,6 +61,7 @@ export const MainChat = () => {
                         <Button
                             disabled={values[NAME] === '' || values[ROOM] === ''}
                             type="primary"
+                            style={{ width: '100%' }}
                         >
                             Sign in
                         </Button>

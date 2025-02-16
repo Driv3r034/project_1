@@ -18,6 +18,20 @@ const io = new Server(server, {
     },
 });
 
+io.on('connection', (socket)=> {
+    socket.on('join', ({ name, room }) => {     // прослушиваем с методом ".on"
+        socket.join(room);      // кладём сюда название комнаты
+
+        socket.emit('message', {
+            data: { user: { name: 'Admin' }, message: `Hey, whatsapp ${name}` },
+        });
+    });
+
+    io.on('disconnect', () => {
+        console.log('Disconnect..');
+    });
+});
+
 server.listen(4000, () => {
     console.log('Server is running');
 });
