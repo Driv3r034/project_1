@@ -5,11 +5,11 @@ import { Header } from './components/sections/header/header.tsx'
 import { Footer } from './components/sections/footer/footer.tsx'
 import { FirstPage } from './pages/first-page/first-page.tsx'
 import { Player } from './pages/player/player.tsx'
+import { ChatPage } from './pages/chat-page/chat-page.tsx'
 import { ContactsPage } from './pages/contacts/contacts.tsx'
-import { GlobalStyle } from '../public/styled-global.ts';
-import * as Styled from './App.styles';
+import { GlobalStyle } from '../public/styled-global.ts'
+import * as Styled from './App.styles'
 import './index.css'
-
 
 createRoot(document.getElementById('root')!).render(
   <>
@@ -20,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/first" element={<FirstPage />} />
+          <Route path='/chat' element={<ChatPage />} />
           <Route path="/player" element={<Player />} />
           <Route path="/contacts" element={<ContactsPage />} />
         </Routes>

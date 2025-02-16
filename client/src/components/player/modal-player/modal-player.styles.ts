@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { rem } from "../../../../helpers/rem-converter";
+import { rem } from "../../../helpers/rem-converter";
 
 export const WrapperBtn = styled.div`
     display: flex;

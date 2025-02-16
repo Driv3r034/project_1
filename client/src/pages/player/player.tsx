@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useMachine } from "@xstate/react";
 import { PageWrapper } from "../../styles/content-container";
-import { ModalPlayer } from "../../components/sections/player/modal-player/modal-player";
-import { playerMachine } from "../../components/sections/player/state/player-machine";
+import { ModalPlayer } from "../../components/player/modal-player/modal-player";
+import { playerMachine } from "../../components/player/state/player-machine";
 import { PlayCircleTwoTone } from "@ant-design/icons";
 import * as Styled from './player.styles';
 
