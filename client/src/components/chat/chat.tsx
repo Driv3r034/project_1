@@ -7,6 +7,7 @@ const socket = io('http://localhost:4000');
 
 export const Chat = () => {
     const { search } = useLocation();
+    const [state, setState] = useState<unknown[] | []>([]);     // массив со всеми приходящими сообщениями
     const [params, setParams] = useState<unknown | null>(null);
 
     useEffect(() => {
@@ -18,9 +19,12 @@ export const Chat = () => {
 
     useEffect(() => {
         socket.on('message', ({ data }) => {
+            setState((_state) => ([ ..._state, data ]));
             console.log('data:', data);     // получаем message с бэка при присоединении участника
         });
     }, []);
+
+    console.log('state:', state);
 
     return (
         <>
