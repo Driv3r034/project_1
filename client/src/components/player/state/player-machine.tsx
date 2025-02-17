@@ -1,5 +1,14 @@
 import { createMachine } from "xstate";
 
+const actions = {
+    MUTE: 'muted',
+    UNMUTE: 'playing',
+    INCREASE_VOLUME: 'playing',
+    DECREASE_VOLUME: 'playing',
+    MINIMIZE: 'minimized',
+    MAXIMIZE: 'paused',
+};
+
 export const playerMachine = createMachine({
     id: 'player',
     initial: 'paused',
@@ -7,31 +16,20 @@ export const playerMachine = createMachine({
         playing: {
             on: {
                 PAUSE: 'paused',
-                MINIMIZE: 'minimized',
-                MUTE: 'muted',
-                UNMUTE: 'playing',
-                INCREASE_VOLUME: 'playing',
-                DECREASE_VOLUME: 'playing',
+                ...actions,
             },
         },
         paused: {
             on: {
                 PLAY: 'playing',
-                MINIMIZE: 'minimized',
-                MUTE: 'muted',
-                UNMUTE: 'playing',
-                INCREASE_VOLUME: 'playing',
-                DECREASE_VOLUME: 'playing',
+                ...actions,
             },
         },
         minimized: {
             on: {
+                ...actions,
                 MAXIMIZE: 'paused',
                 PLAY: 'playing',
-                MUTE: 'muted',
-                UNMUTE: 'playing',
-                INCREASE_VOLUME: 'playing',
-                DECREASE_VOLUME: 'playing',
             },
         },
         muted: {
