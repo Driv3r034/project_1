@@ -8,7 +8,7 @@ const socket = io('http://localhost:4000');
 export const Chat = () => {
     const { search } = useLocation();
     const [state, setState] = useState<unknown[] | []>([]);     // массив со всеми приходящими сообщениями
-    const [params, setParams] = useState<unknown | null>(null);
+    const [params, setParams] = useState<unknown>({ room: '', user: '' });
 
     useEffect(() => {
         const searchParams = Object.fromEntries(new URLSearchParams(search));

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Input, Button } from 'antd';
 import type { ValueProps } from "../main-chat/main-chat.types";
 import * as Styled from './join.styles';
@@ -19,6 +19,15 @@ export const Join: FC<JoinProps> = ({
     handleChange,
     handleClick,
 }) => {
+    const navigate = useNavigate();
+
+    const handleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+        handleClick(e);
+        
+        if (values[name] && values[room]) {
+            navigate(`/chat?name=${values[name]}&room=${values[room]}`);
+        }
+    };
 
     return (
         <>
@@ -47,19 +56,14 @@ export const Join: FC<JoinProps> = ({
                         required
                     />
                 </div>
-
-                <Link
-                    onClick={() => handleClick}
-                    to={`/chat?name=${values[name]}&room=${values[room]}`}
+                <Button
+                    disabled={values[name] === '' || values[room] === ''}
+                    type="primary"
+                    onClick={handleSignIn}
+                    style={{ width: '100%' }}
                 >
-                    <Button
-                        disabled={values[name] === '' || values[room] === ''}
-                        type="primary"
-                        style={{ width: '100%' }}
-                    >
-                        Sign in
-                    </Button>
-                </Link>
+                    Sign in
+                </Button>
             </Styled.Form>
         </>
     );

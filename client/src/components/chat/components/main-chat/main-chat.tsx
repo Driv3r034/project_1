@@ -10,6 +10,7 @@ const FIELDS = {
 
 export const MainChat = () => {
     const { NAME, ROOM } = FIELDS;
+    const [isAuth, setIsAuth] = useState(false);
     const [values, setValues] = useState({ [NAME]: '', [ROOM]: '' });
 
     const handleChange = ({ target: { value, name } }: ValueProps) => {
@@ -21,19 +22,28 @@ export const MainChat = () => {
 
         if (isDisabled) {
             e.preventDefault()
+        } else {
+            setIsAuth(true);
         }
     };
 
     return (
         <Styled.Wrapper>
             <Styled.Container>
-                <Join
-                    values={values}
-                    name={NAME}
-                    room={ROOM}
-                    handleChange={handleChange}
-                    handleClick={handleClick}
-                />
+                {!isAuth
+                    ? (
+                        <Join
+                            values={values}
+                            name={NAME}
+                            room={ROOM}
+                            handleChange={handleChange}
+                            handleClick={handleClick}
+                        />
+                    )
+                    : (
+                        'Chat Room'
+                    )
+                }
             </Styled.Container>
         </Styled.Wrapper>
     );
